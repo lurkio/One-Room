@@ -122,7 +122,7 @@ REM 51 PRINT ST$;
 124 IF O<1 THEN PRINT"Why do you want to do that for?":GOTO48
 125 IF O<7 OR O=15 OR O=16 OR O=17 OR O=26 OR O=39 OR O=40 OR O=41 OR O=46THEN PRINT"Don't be silly!":GOTO48
 126 IF O=11 OR O=27 OR O=32OR O=50 THEN PRINT"I can't, it's too heavy!":GOTO48
-127 IF O=12 THEN IF F%(6)=0 THEN PRINT"I can't, desk is locked.":GOTO48:ELSE IF O=12 EX$(O-6)="I see a CB set.":IF V=3 THEN 166
+127 IF O=12 THEN IF F%(6)=0 THEN PRINT"I can't, desk is locked.":GOTO48:ELSE IF O=12 EX$(O-6)="I see a CB set.":OB%(29)=2:GOTO 166
 128 IF O=43 AND OB%(54)=0 THEN IF F%(5)=0THEN PRINT"I can't, the cage is not open.":GOTO48
 
 129 REP.IF O<>43 OR OB%(49)<>-1 U.1EL. IF OB%(54)=6 THEN OB%(49)=0:OB%(54)=0:U.1:GOTO144:ELSEPRINT"It won't come to me.":U.1:GOTO48
@@ -317,7 +317,7 @@ REM 51 PRINT ST$;
 
 269 REP.IF O<>37ORI$<>"OUTLET"U.1EL.PRINT"OK, cord is now plugged into the outlet.":EX$(O-6)="It's plugged in.":IF LEFT$(EX$(23),2)="CB" THEN F%(9)=1:EX$(23)="CB is ready to go!":U.1:GOTO271:ELSE U.1:GOTO270
 
-270 IF O=37 AND (I$="RIG" OR I$="CB")THEN PRINT"OK, CB rig now has the cord connected.":IF LEFT$(EX$(29),4)="THE" THEN F%(9)=1:EX$(23)="CB now has a cord and mike.":GOTO48
+270 IF O=37 AND (I$="RIG" OR I$="CB")THEN PRINT"OK, CB rig now has the cord connected.":IF LEFT$(EX$(23),4)="Ther" THEN F%(9)=1:EX$(23)="CB now has a cord and mike.":GOTO48
 271 IF F%(15)=0THEN F%(15)=1 ELSE IF F%(15)=1 THEN F%(15)=2:F%(9)=1
 272 IF O=55 THEN PRINT"That wire won't do any good, it has beencut into small pieces.":GOTO48
 273 IF O=36 THEN PRINT"OK, the wire hanger fit nicely into the antenna jack!":F%(16)=1:GOTO48
