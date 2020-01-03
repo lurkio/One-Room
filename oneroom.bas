@@ -200,10 +200,10 @@ REM 51 PRINT ST$;
 181 *|*** PUSH ***
 182 IF F<>1 THEN 187
 183 IF O=11 THEN OB%(15)=2:GOTO204
-184 IF O=27 THEN OB%(39)=YOU:GOTO204
+184 IF O=27 THEN IF OB%(39)<>-2 OB%(39)=YOU:GOTO204 EL.IFO=27G.204
 185 IF O=30 THEN OB%(31)=YOU:GOTO204
 
-186 IF O=31 THEN IFOB%(22)<>-1 THEN PRINT"I can't with just my hands.":GOTO48:ELSE IFO=31 OB%(20)=YOU:GOTO204
+186 REP.IFO<>31U.1EL.IFOB%(22)<>-1 PRINT"I can't with just my hands.":GOTO48:EL.IFOB%(20)=0 OB%(20)=YOU:GOTO204 EL.G.204
 
 187 IF O<>46 THEN 203
 188 IF F%(16)=0 THEN PRINT"It will not work at all without an"'"antenna!":GOTO48
@@ -326,7 +326,7 @@ REM 51 PRINT ST$;
 275 *|*** PUT ***
 276 IF F<>2THENPRINT"I don't have it.":GOTO48:ELSEINPUT" Where? "I$:GOSUB382:IF X>0THEN276
 277 IF O=43 AND I$="CAGE" THEN EX$(36)="I see a dove.":OB%(O)=0:F%(5)=0:F%(7)=0:GOTO280
-278 IF O=20 AND I$="HOLE"THEN PRINT"OK, the hole is now plugged up and the  mouse can't get out.":F%(17)=1:OB%(39)=0:OB%(20)=5:GOTO48
+278 IF O=20 AND I$="HOLE"THEN PRINT"OK, the hole is now plugged up and the  mouse can't get out.":F%(17)=1:OB%(39)=-2:OB%(20)=-2:GOTO48
 279 PRINT"I can't.":GOTO48
 280 PRINT"OK, I did.":GOTO48
 281 PRINT"I can't do that.":GOTO48
