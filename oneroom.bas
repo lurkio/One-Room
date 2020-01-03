@@ -223,8 +223,8 @@ REM 51 PRINT ST$;
 198 PRINT"'Keep those lips going, buddy, so we canfind you quicker.'":GOTO48
 199 PRINT"'We see a building in the field. That"'"must be it!'":PRINT'"'We're coming in!'"
 200 PRINT'"The truck drivers crashed the door and  got you out safely."
-201 PRINT:PRINT"Next time be more careful when you see arobbery taking place!":*FX15
-202 PRINT:TIME=0:REP.U.INKEY(0)<>-1ORTIME>6000:RUN
+201 PRINT:PRINT"Next time be more careful when you see arobbery taking place!":PRINT:TIME=0:REP.U.TIME>1000:*FX15
+202 IFGET RUN
 203 PRINT"Nothing happened.":GOTO48
 204 PRINT"OK, it moved.":GOTO48
 
