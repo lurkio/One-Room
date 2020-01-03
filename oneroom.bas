@@ -41,7 +41,7 @@
 47 NEXT:IF F=0 THEN PRINT"  NOTHING INTERESTING"
 48 IF BT>6 THEN F%(1)=0
 49 IF F%(1)=1 THEN BT=BT+1:GOSUB385
-50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:EX$(37)="There is a piece of paper tied to one of its legs."
+50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:F%(7)=1:EX$(37)="There is a piece of paper tied to one ofits legs."
 REM 51 PRINT ST$;
 52 INPUT'"What should I do? "I$
 53 IF LEN(I$)=1 THEN X=INSTR("NSEWUD",I$):IF X>0 AND X<7 THEN YOU=X+1:GOTO37
@@ -151,7 +151,7 @@ REM 51 PRINT ST$;
 
 146 *|*** DROP ***
 147 IF F<>2 THEN 153
-148 IF O=43 AND F%(4)=1THEN PRINT"The dove flew away through the broken"'"window.":F%(13)=1:OB%(43)=0:GOTO152
+148 IF O=43 AND F%(4)=1THEN PRINT"The dove flew away through the broken"'"window.":F%(13)=1:OB%(43)=0:EX$(36)="It's empty.":GOTO152
 149 IF O=43 THEN OB%(43)=0:OB%(54)=6:PRINT"OK, I let the dove go.":GOTO152
 150 IF YOU=6 THEN YOU=7
 151 OB%(O)=YOU:PRINT"OK, I dropped it."
@@ -163,9 +163,9 @@ REM 51 PRINT ST$;
 
 156 IF O=11 THEN IF OB%(45)=-1 THEN F%(6)=1:GOTO166 EL.IF O=11 PRINT"I don't have any keys.":GOTO48
 
-157 IF O<>42GOTO159
+157 IFO<>42G.159 EL.IFOB%(55)=0P."I can't, the gate is wired shut.":G.48
 
-158 IF OB%(55)=0THENPRINT"I can't, the gate is wired shut.":GOTO48 ELSE IF F%(4)=1THENPRINT"The dove just flew out through the"'"broken window...":F%(13)=1:F%(5)=1:GOTO48 ELSEF%(5)=1:OB%(54)=6:F%(7)=1:EX$(O-6)="It's empty.":GOTO166
+158 EX$(36)="It's empty.":F%(5)=1:IFOB%(43)=-1ORF%(13)G.166EL. IFF%(4)ANDF%(13)=0ANDOB%(43)<>-1ANDF%(7)=0P."The dove just flew out through the"'"broken window...":F%(13)=1:G.48EL.IFF%(4)=0OB%(54)=6:F%(7)=1:G.166EL.G.166
 
 159 IF O=12 THEN127
 160 IF O=40 THEN INPUT" The combination? "I$:IF I$="4R8L12R"THEN PRINT"CLICK!":EX$(O-6)="I see a set of keys.":GOTO166
@@ -233,7 +233,7 @@ REM 51 PRINT ST$;
 
 208 IF O=26 THEN IF I$="CROWBAR" OR I$="HAMMER" OR I$="RACK" THEN PRINT"The glass window panes broke.":F%(4)=1:OB%(19)=7:EX$(O-6)="The window is broken.":GOSUB398:GOTO48:ELSE IF O=26 GOTO211
 
-209 IF O=26 AND F%(7)=1 THEN PRINT"The dove flew out the broken window.":F%(13)=1:OB%(54)=0:OB%(43)=0:GOTO48
+209 IF O=26 AND F%(7)=1 THEN PRINT"The dove flew out the broken window.":F%(13)=1:F%(7)=0:OB%(54)=0:OB%(43)=0:GOTO48
 210 IF O=33 AND OB%(19)=-1 THEN PRINT"Something fell out of it.":OB%(51)=7:EX$(27)="It's torn and there is nothing in it.":GOTO48
 211 PRINT"I tried, but nothing happened.":GOTO48
 
@@ -325,7 +325,7 @@ REM 51 PRINT ST$;
 
 275 *|*** PUT ***
 276 IF F<>2THENPRINT"I don't have it.":GOTO48:ELSEINPUT" Where? "I$:GOSUB382:IF X>0THEN276
-277 IF O=43 AND I$="CAGE" THEN EX$(36)="I see a dove.":OB%(O)=0:F%(5)=0:GOTO280
+277 IF O=43 AND I$="CAGE" THEN EX$(36)="I see a dove.":OB%(O)=0:F%(5)=0:F%(7)=0:GOTO280
 278 IF O=20 AND I$="HOLE"THEN PRINT"OK, the hole is now plugged up and the  mouse can't get out.":F%(17)=1:OB%(39)=0:OB%(20)=5:GOTO48
 279 PRINT"I can't.":GOTO48
 280 PRINT"OK, I did.":GOTO48
@@ -365,7 +365,7 @@ REM 51 PRINT ST$;
 395 PRINT:PRINT"'The search for the kidnapped truck"'"driver continues.'"
 396 PRINT:PRINT"'His semi truck was found in an"'"abandoned road. There is speculation he may not be alive.'"
 397 RETURN
-398 IF OB%(54)<>0 OR OB%(43)<>0 THEN PRINT"The dove flew away through the broken window.":OB%(54)=0:OB%(43)=0:F%(13)=1:RETURN
+398 IF OB%(54)<>0 OR OB%(43)<>0 THEN PRINT"The dove flew away through the broken"'"window.":OB%(54)=0:OB%(43)=0:F%(13)=1:RETURN
 399 RETURN
 400 GOTO 48
 
