@@ -41,7 +41,7 @@
 47 NEXT:IF F=0 THEN PRINT"  NOTHING INTERESTING"
 48 IF BT>6 THEN F%(1)=0
 49 IF F%(1)=1 THEN BT=BT+1:GOSUB385
-50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken window.":F%(13)=0:OB%(54)=6:EX$(37)="There is a piece of paper tied to one of its legs."
+50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:EX$(37)="There is a piece of paper tied to one of its legs."
 REM 51 PRINT ST$;
 52 INPUT'"What should I do? "I$
 53 IF LEN(I$)=1 THEN X=INSTR("NSEWUD",I$):IF X>0 AND X<7 THEN YOU=X+1:GOTO37
@@ -74,7 +74,7 @@ REM 51 PRINT ST$;
 80 IF A$="UNL" THEN A$="OPE"
 81 IF B$="CB" THEN B$="RIG"
 82 IF B$="BIR" THEN B$="DOV"
-83 V=(INSTR(VB$,A$)+2)/3:IF V<1 THEN PRINT"Sorry, i just don't know how to":PRINT V$" anything.":GOTO 48
+83 V=(INSTR(VB$,A$)+2)/3:IF V<1 THEN PRINT"Sorry, I just don't know how to":PRINT V$" anything.":GOTO 48
 84 O=(INSTR(OB$,B$)+2)/3:IF O>1THEN115
 
 85 REP.IFA$<>"EXA"ORB$<>"POC"U.1EL.IF OB%(35)=-1ANDOB%(24)=0PRINT"I see a pair of pliers.":U.1:GOTO48:EL.REP.IF OB%(35)<>-1 OR OB%(24)=0PRINT"Pockets are empty.":U.1:U.1:GOTO48 ELSEPRINT"I don't have any pockets.":U.1:U.1:GOTO48
@@ -165,7 +165,7 @@ REM 51 PRINT ST$;
 
 157 IF O<>42GOTO159
 
-158 IF OB%(55)=0THENPRINT"I can't, the gate is wired shut.":GOTO48 ELSE IF F%(4)=1THENPRINT"The dove just flew out through the"'"broken window.":F%(13)=1:F%(5)=1 ELSEF%(5)=1:OB%(54)=6:F%(7)=1:EX$(O-6)="It's empty.":GOTO166
+158 IF OB%(55)=0THENPRINT"I can't, the gate is wired shut.":GOTO48 ELSE IF F%(4)=1THENPRINT"The dove just flew out through the"'"broken window...":F%(13)=1:F%(5)=1:GOTO48 ELSEF%(5)=1:OB%(54)=6:F%(7)=1:EX$(O-6)="It's empty.":GOTO166
 
 159 IF O=12 THEN127
 160 IF O=40 THEN INPUT" The combination? "I$:IF I$="4R8L12R"THEN PRINT"CLICK!":EX$(O-6)="I see a set of keys.":GOTO166
@@ -174,7 +174,7 @@ REM 51 PRINT ST$;
 
 162 IF O=50 THEN IF OB%(37)=0THEN PRINT"I opened the stove and saw an electric"'"cord inside.":GOTO48ELSE IFO=50 PRINT"There is nothing in it.":GOTO48
 
-163 IF F=0GOTO380ELSE IF O=50THEN 166
+163 IF F=0GOTO380ELSE IF O=50ORO=42THEN 166
 164 PRINT"Sorry, it does not open.":GOTO48
 165 PRINT"It's already open.":GOTO48
 166 PRINT"OK, it's now open.":GOTO48
