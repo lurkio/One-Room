@@ -45,14 +45,14 @@ REM 14 ST$=STRING$(32,CHR$(140))
 50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:F%(7)=1:EX$(37)="There is a piece of paper tied to one ofits legs."
 REM 51 PRINT ST$;
 52 INPUT'"What should I do? "I$
-53 REP.IFLEN(I$)<>1U.1EL.X=INSTR("NSEWUD",I$):IFX<=0ORX>=7U.1EL.IFF%(2)=0:U.1:G.174EL.YOU=X+1:U.1:GOTO37
+53 IFLEN(I$)<>1EL.X=INSTR("NSEWUD",I$):IFX<=0ORX>=7EL.IFF%(2)=0G.174EL.YOU=X+1:GOTO37
 54 IF I$=""THEN52 ELSE IF I$="LOOK" THEN CLS:GOTO37
 55 IF I$="QUIT" THEN END
 56 IF I$="SAVE" THEN 351
 57 IF I$="HELP" THEN 92
 58 IF I$="LOAD" THEN 357
 59 IF I$="RADIO OFF" THEN F%(1)=0:PRINT"OK, radio is off.":GOTO48
-60 REP.IF I$<>"PLAY RADIO"ANDI$<>"RADIO ON" U.1 EL.IFOB%(14)=0 F%(1)=1:U.1:GOTO48 ELSE PRINT"It needs a battery.":U.1:GOTO48
+60 IF I$<>"PLAY RADIO"ANDI$<>"RADIO ON"EL.IFOB%(14)=0 F%(1)=1:GOTO48 ELSE PRINT"It needs a battery.":GOTO48
 61 IF LEFT$(I$,3)<>"INV"THEN 67
 62 CLS:PRINT'"I am carrying:":CA=0
 63 FOR I=1TO NO
@@ -78,7 +78,7 @@ REM 51 PRINT ST$;
 83 V=(INSTR(VB$,A$)+2)/3:IF V<1 THEN PRINT"Sorry, I just don't know how to":PRINT V$" anything.":GOTO 48
 84 O=(INSTR(OB$,B$)+2)/3:IF O>1THEN115
 
-85 REP.IFA$<>"EXA"ORB$<>"POC"U.1EL.IF OB%(35)=-1ANDOB%(24)=0PRINT"I see a pair of pliers.":U.1:GOTO48:EL.IF OB%(35)=-1 AND OB%(24)<>0PRINT"Pockets are empty.":U.1:GOTO48 ELSEPRINT"I don't have any pockets.":U.1:GOTO48
+85 IFA$<>"EXA"ORB$<>"POC"EL.IF OB%(35)=-1ANDOB%(24)=0PRINT"I see a pair of pliers.":GOTO48:EL.IF OB%(35)=-1 AND OB%(24)<>0PRINT"Pockets are empty.":GOTO48 ELSEPRINT"I don't have any pockets.":GOTO48
 
 86 IF A$="EXA"ANDB$="ROO"THENPRINT"It's a large room. There is a window anda door and there are lots of things"'"around.":GOTO48
 87 IF A$="EXA"ANDB$="GAT"THENPRINT"The only way to open it is to cut the"'"wire.":GOTO48
@@ -126,7 +126,7 @@ REM 51 PRINT ST$;
 127 IF O=12 THEN IF F%(6)=0 THEN PRINT"I can't, desk is locked.":GOTO48:ELSE IF O=12 EX$(O-6)="I see a CB set.":OB%(29)=2:GOTO 166
 128 IF O=43 AND OB%(54)=0 THEN IF F%(5)=0THEN PRINT"I can't, the cage is not open.":GOTO48
 
-129 REP.IF O<>43 OR OB%(49)<>-1 U.1EL. IF OB%(54)=6 THEN OB%(49)=0:OB%(54)=0:U.1:GOTO144:ELSEPRINT"It won't come to me.":U.1:GOTO48
+129 IF O<>43 OR OB%(49)<>-1 EL. IF OB%(54)=6 THEN OB%(49)=0:OB%(54)=0:GOTO144:ELSEPRINT"It won't come to me.":GOTO48
 
 130 IF O=43 AND OB%(49)<>-1THEN PRINT"It won't come to me.":GOTO48
 
@@ -204,7 +204,7 @@ REM 51 PRINT ST$;
 184 IF O=27 THEN IF OB%(39)<>-2 OB%(39)=YOU:GOTO204 EL.IFO=27G.204
 185 IF O=30 THEN OB%(31)=YOU:GOTO204
 
-186 REP.IFO<>31U.1EL.IFOB%(22)<>-1 PRINT"I can't with just my hands.":U.1:GOTO48:EL.IFOB%(20)=0 OB%(20)=YOU:U.1:GOTO204 EL.U.1:G.204
+186 IFO<>31EL.IFOB%(22)<>-1 PRINT"I can't with just my hands.":GOTO48EL.IFOB%(20)=0 OB%(20)=YOU:GOTO204 EL.G.204
 
 187 IFO=17G.223EL. IF O<>46 THEN 203
 188 IF F%(16)=0 THEN PRINT"It will not work at all without an"'"antenna!":GOTO48
@@ -292,7 +292,7 @@ REM 51 PRINT ST$;
 
 250 IF O=55 AND I$="PLIERS" AND OB%(24)=-1 THEN PRINT"OK, the wire is now cut.":OB%(55)=7:EX$(49)="The wire has been cut.":GOTO48:ELSE PRINT"I can't.":GOTO48
 
-251 REP.IFO<>33ORF<>0OR(I$<>"GLASS"ANDI$<>"BROKEN GLASS")U.1EL.IFOB%(19)<>-1P."I don't have the glass with me.":U.1:G.48:EL.IFOB%(19)=-1P."Something came out of the torn pillow.":OB%(51)=7:EX$(27)="It is torn.":U.1:GOTO48
+251 IFO<>33ORF<>0OR(I$<>"GLASS"ANDI$<>"BROKEN GLASS")EL.IFOB%(19)<>-1P."I don't have the glass with me.":G.48EL.IFOB%(19)=-1P."Something came out of the torn pillow.":OB%(51)=7:EX$(27)="It is torn.":GOTO48
 
 252 PRINT"I can't cut it.":GOTO48
 
@@ -316,7 +316,7 @@ REM 51 PRINT ST$;
 267 IF F=0 THEN PRINT"I don't see that here.":GOTO48
 268 INPUT" Where? "I$:GOSUB382:IFX>0THEN268
 
-269 REP.IF O<>37ORI$<>"OUTLET"U.1EL.PRINT"OK, cord is now plugged into the outlet.":EX$(O-6)="It's plugged in.":IF LEFT$(EX$(23),2)="CB" THEN F%(9)=1:EX$(23)="CB is ready to go!":U.1:GOTO271:ELSE U.1:GOTO270
+269 IF O<>37ORI$<>"OUTLET"EL.PRINT"OK, cord is now plugged into the outlet.":EX$(O-6)="It's plugged in.":IF LEFT$(EX$(23),2)="CB" THEN F%(9)=1:EX$(23)="CB is ready to go!":GOTO271ELSE GOTO270
 
 270 IF O=37 AND (I$="RIG" OR I$="CB")THEN PRINT"OK, CB rig now has the cord connected.":IF LEFT$(EX$(23),4)="Ther" THEN F%(9)=1:EX$(23)="CB now has a cord and mike.":GOTO48
 271 IF F%(15)=0THEN F%(15)=1 ELSE IF F%(15)=1 THEN F%(15)=2:F%(9)=1
