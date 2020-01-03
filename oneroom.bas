@@ -1,4 +1,5 @@
-10 CLS:PRINT'"    * A ONE ROOM ADVENTURE *"
+ 5 *FX12
+10 MODE7:PRINT'"    * A ONE ROOM ADVENTURE *"
 11 PRINT STRING$(32,"-");
 12 PRINT:PRINT'"You have just awakened.":PRINT:PRINT"You don't have the slightest idea where you are or even who you are!"
 13 PRINT:PRINT"You seem to have amnesia from a blow to your head."
@@ -342,7 +343,7 @@ REM 51 PRINT ST$;
 358 DV%=OPENIN("DATA"):INPUT#DV%,YOU,OB$(35),OB$(36),EX$(6),EX$(8),EX$(20),EX$(23),EX$(26),EX$(27),EX$(31),EX$(34),EX$(36),EX$(37),EX$(49)
 359 FOR X%=1 TO NO
 360 INPUT#DV%,OB%(X%):NEXT:F.X%=1TO30:INPUT#DV%,F%(X%):N.
-361 IF EOF#DV% THEN CLOSE#DV%:ONERROROFF
+361 CLOSE#DV%:ONERROROFF
 362 CLS:GOTO37
 
 380 PRINT"I don't see anything like that around"'"here.":GOTO48
