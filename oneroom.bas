@@ -205,7 +205,7 @@ REM 51 PRINT ST$;
 
 186 REP.IFO<>31U.1EL.IFOB%(22)<>-1 PRINT"I can't with just my hands.":GOTO48:EL.IFOB%(20)=0 OB%(20)=YOU:GOTO204 EL.G.204
 
-187 IF O<>46 THEN 203
+187 IFO=17G.223EL. IF O<>46 THEN 203
 188 IF F%(16)=0 THEN PRINT"It will not work at all without an"'"antenna!":GOTO48
 189 IF OB%(29)=0THEN 203
 190 IF F%(9)=0 OR F%(10)=0 THEN PRINT"The CB rig does not seem to be working  at all.":GOTO48
