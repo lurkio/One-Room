@@ -45,7 +45,7 @@ REM 14 ST$=STRING$(32,CHR$(140))
 50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:F%(7)=1:EX$(37)="There is a piece of paper tied to one ofits legs."
 REM 51 PRINT ST$;
 52 INPUT'"What should I do? "I$
-53 IF LEN(I$)=1 THEN X=INSTR("NSEWUD",I$):IF X>0 AND X<7 THEN YOU=X+1:GOTO37
+53 REP.IFLEN(I$)<>1U.1EL.X=INSTR("NSEWUD",I$):IFX<=0ORX>=7U.1EL.IFF%(2)=0:U.1:G.174EL.YOU=X+1:U.1:GOTO37
 54 IF I$=""THEN52 ELSE IF I$="LOOK" THEN CLS:GOTO37
 55 IF I$="QUIT" THEN END
 56 IF I$="SAVE" THEN 351
