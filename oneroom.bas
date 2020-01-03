@@ -77,7 +77,7 @@ REM 51 PRINT ST$;
 83 V=(INSTR(VB$,A$)+2)/3:IF V<1 THEN PRINT"Sorry, I just don't know how to":PRINT V$" anything.":GOTO 48
 84 O=(INSTR(OB$,B$)+2)/3:IF O>1THEN115
 
-85 REP.IFA$<>"EXA"ORB$<>"POC"U.1EL.IF OB%(35)=-1ANDOB%(24)=0PRINT"I see a pair of pliers.":U.1:GOTO48:EL.REP.IF OB%(35)<>-1 OR OB%(24)=0PRINT"Pockets are empty.":U.1:U.1:GOTO48 ELSEPRINT"I don't have any pockets.":U.1:U.1:GOTO48
+85 REP.IFA$<>"EXA"ORB$<>"POC"U.1EL.IF OB%(35)=-1ANDOB%(24)=0PRINT"I see a pair of pliers.":U.1:GOTO48:EL.IF OB%(35)=-1 AND OB%(24)<>0PRINT"Pockets are empty.":U.1:GOTO48 ELSEPRINT"I don't have any pockets.":U.1:GOTO48
 
 86 IF A$="EXA"ANDB$="ROO"THENPRINT"It's a large room. There is a window anda door and there are lots of things"'"around.":GOTO48
 87 IF A$="EXA"ANDB$="GAT"THENPRINT"The only way to open it is to cut the"'"wire.":GOTO48
