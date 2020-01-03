@@ -3,7 +3,7 @@
 11 PRINT STRING$(32,"-");
 12 PRINT:PRINT'"You have just awakened.":PRINT:PRINT"You don't have the slightest idea where you are or even who you are!"
 13 PRINT:PRINT"You seem to have amnesia from a blow to your head."
-14 ST$=STRING$(32,CHR$(140))
+REM 14 ST$=STRING$(32,CHR$(140))
 
 15 DIM RM$(7),OB$(56),EX$(50),OB%(57),D$(6),F%(18):MX=8:CA=0:XT=0:BT=0
 
@@ -223,8 +223,8 @@ REM 51 PRINT ST$;
 198 PRINT"'Keep those lips going, buddy, so we canfind you quicker.'":GOTO48
 199 PRINT"'We see a building in the field. That"'"must be it!'":PRINT'"'We're coming in!'"
 200 PRINT'"The truck drivers crashed the door and  got you out safely."
-201 PRINT:PRINT"Next time be more careful when you see arobbery taking place!"
-202 PRINT:PRINT:END
+201 PRINT:PRINT"Next time be more careful when you see arobbery taking place!":*FX15
+202 PRINT:TIME=0:REP.U.INKEY(0)<>-1ORTIME>6000:RUN
 203 PRINT"Nothing happened.":GOTO48
 204 PRINT"OK, it moved.":GOTO48
 
