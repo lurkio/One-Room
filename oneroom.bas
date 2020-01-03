@@ -186,7 +186,7 @@ REM 51 PRINT ST$;
 171 PRINT"OK, it's now closed.":GOTO48
 
 172 *|*** EXAMINE ***
-173 IF O<1 THEN PRINT"did anybody mention anything about any";:PRINT MID$(I$,INSTR(I$," "));"?":GOTO48
+173 IF O<1 THEN PRINT"Did anybody mention anything about any ";:PRINT MID$(I$,INSTR(I$," "));"?":GOTO48
 174 IF F%(2)=0 THEN PRINT"I can't, I'm blindfolded.":GOTO48
 175 IF O<7 THEN YOU=O+1:GOTO37
 
