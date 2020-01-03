@@ -44,16 +44,16 @@ REM 14 ST$=STRING$(32,CHR$(140))
 49 IF F%(1)=1 THEN BT=BT+1:GOSUB385
 50 IF F%(13)=1 AND OB%(49)<>0 THEN PRINT"Something just came through the broken"'"window.":F%(13)=0:OB%(54)=6:F%(7)=1:EX$(37)="There is a piece of paper tied to one ofits legs."
 REM 51 PRINT ST$;
-52 INPUT'"What should I do? "I$
+52 INPUT'"What should I do? "I$:PROCi
 53 IFLEN(I$)<>1EL.X=INSTR("NSEWUD",I$):IFX<=0ORX>=7EL.IFF%(2)=0G.174EL.YOU=X+1:GOTO37
-54 IF I$=""THEN52 ELSE IF I$="LOOK" THEN CLS:GOTO37
+54 IF I$=""THEN52 ELSE IF I$="LOOK"ORI$="L" THEN CLS:GOTO37
 55 IF I$="QUIT" THEN END
 56 IF I$="SAVE" THEN 351
 57 IF I$="HELP" THEN 92
 58 IF I$="LOAD" THEN 357
 59 IF I$="RADIO OFF" THEN F%(1)=0:PRINT"OK, radio is off.":GOTO48
 60 IF I$<>"PLAY RADIO"ANDI$<>"RADIO ON"EL.IFOB%(14)=0 F%(1)=1:GOTO48 ELSE PRINT"It needs a battery.":GOTO48
-61 IF LEFT$(I$,3)<>"INV"THEN 67
+61 IF I$<>"I"ANDLEFT$(I$,3)<>"INV"THEN 67
 62 CLS:PRINT'"I am carrying:":CA=0
 63 FOR I=1TO NO
 64 IF OB%(I)=-1THEN PRINT"  ";OB$(I):CA=CA+1
@@ -61,8 +61,8 @@ REM 51 PRINT ST$;
 66 GOTO 48
 67 REM
 68 SP=INSTR(I$,CHR$(32)):IF SP=0 THEN PRINT"Try using two-word commands.":GOTO48
-69 V$=LEFT$(I$,SP-1):O$=MID$(I$,SP+1)
-70 A$=LEFT$(V$,3):B$=LEFT$(O$,3)
+69 V$=LEFT$(I$,SP-1):O$=MID$(I$,SP+1):IFV$="HELP"G.92
+70 A$=LEFT$(V$,3):B$=LEFT$(O$,3):IFA$="X"A$="EXA"EL.IFA$="L"A$="LOO"
 71 IF A$="TAK" THEN A$="GET"
 72 IF A$="LEA" THEN A$="DRO"
 73 IF A$="LOO" THEN A$="FAC"
@@ -87,7 +87,7 @@ REM 51 PRINT ST$;
 89 *|**************************
 90 *|****** HELP SECTION ******
 91 *|**************************
-92 INPUT'"Tell me which object has you a little"'"puzzled: "I$:PRINT
+92 INPUT'"Tell me which object has you a little"'"puzzled: "I$:PRINT:PROCi
 93 IF I$="ROPE" THEN PRINT"Have you tried rubbing it on something  sharp?":GOTO48
 94 IF I$="RADIO" THEN PRINT"Try playing it.":GOTO48
 95 IF I$="CB" OR I$="SET" THEN PRINT"Read a book on it.":GOTO48
@@ -169,7 +169,7 @@ REM 51 PRINT ST$;
 158 EX$(36)="It's empty.":F%(5)=1:IFOB%(43)=-1ORF%(13)G.166EL. IFF%(4)ANDF%(13)=0ANDOB%(43)<>-1ANDF%(7)=0P."The dove just flew out through the"'"broken window...":F%(13)=1:G.48EL.IFF%(4)=0OB%(54)=6:F%(7)=1:G.166EL.G.166
 
 159 IF O=12 THEN127
-160 IF O=40 THEN INPUT" The combination? "I$:IF I$="4R8L12R"THEN PRINT"CLICK!":EX$(O-6)="I see a set of keys.":GOTO166
+160 IF O=40 THEN INPUT" The combination? "I$:PROCi:IF I$="4R8L12R"THEN PRINT"CLICK!":EX$(O-6)="I see a set of keys.":GOTO166
 
 161 IF O=21AND(F=1 OR F=2) THEN IF OB%(56)=-1 THEN OB%(22)=YOU:OB%(23)=YOU:OB%(25)=YOU:GOTO166:ELSE IF O=21AND(F=1 OR F=2) PRINT"The top is rusted and cannot be opened.":GOTO48
 
@@ -230,7 +230,7 @@ REM 51 PRINT ST$;
 
 205 *|*** BREAK ***
 206 IF F=0 THEN 380
-207 INPUT" With what? "I$:GOSUB382:IF X>0THEN207
+207 INPUT" With what? "I$:PROCi:GOSUB382:IF X>0THEN207
 
 208 IF O=26 THEN IF I$="CROWBAR" OR I$="HAMMER" OR I$="RACK" THEN PRINT"The glass window panes broke.":F%(4)=1:OB%(19)=7:EX$(O-6)="The window is broken.":GOSUB398:GOTO48:ELSE IF O=26 GOTO211
 
@@ -281,13 +281,13 @@ REM 51 PRINT ST$;
 241 PRINT"I don't feel anything unusual.":GOTO48
 
 242 *|*** RUB ***
-243 INPUT" On what? "I$:GOSUB382:IFX>0THEN243
+243 INPUT" On what? "I$:PROCi:GOSUB382:IFX>0THEN243
 244 IF O=8 AND I$="NAIL" THEN F%(3)=1:OB%(8)=7:PRINT"OK, the rope was torn by the nail when Irubbed it.":GOTO48
 245 PRINT"Nothing happened.":GOTO48
 
 246 *|*** CUT ***
 247 IF F%(3)=0 THEN 381
-248 INPUT" With what? "I$:GOSUB382:IF X>0THEN248
+248 INPUT" With what? "I$:PROCi:GOSUB382:IF X>0THEN248
 249 IF O=33 THEN 210
 
 250 IF O=55 AND I$="PLIERS" AND OB%(24)=-1 THEN PRINT"OK, the wire is now cut.":OB%(55)=7:EX$(49)="The wire has been cut.":GOTO48:ELSE PRINT"I can't.":GOTO48
@@ -302,19 +302,19 @@ REM 51 PRINT ST$;
 256 PRINT"It can't be removed.":GOTO48
 
 257 *|*** FACE ***
-258 IF O<1 THEN 172
+258 IF O<1 OR F%(2)=0 THEN 172
 259 IF O<7 THEN YOU=O+1:GOTO37
 260 GOTO172
 
 261 *|*** GO ***
 262 IF F%(2)=0 OR F%(3)=0 THEN 281
 263 IF OB%(O)=0 THEN PRINT "I don't know what you mean!":GOTO48
-264 IF OB%(O)=-1 THEN PRINT"I can't, i'm carrying it!":GOTO48
+264 IF OB%(O)=-1 THEN PRINT"I can't, I'm carrying it!":GOTO48
 265 YOU=OB%(O):PRINT"OK, I did.":GOTO48
 
 266 *|*** CONNECT ***
 267 IF F=0 THEN PRINT"I don't see that here.":GOTO48
-268 INPUT" Where? "I$:GOSUB382:IFX>0THEN268
+268 INPUT" Where? "I$:PROCi:GOSUB382:IFX>0THEN268
 
 269 IF O<>37ORI$<>"OUTLET"EL.PRINT"OK, cord is now plugged into the outlet.":EX$(O-6)="It's plugged in.":IF LEFT$(EX$(23),2)="CB" THEN F%(9)=1:EX$(23)="CB is ready to go!":GOTO271ELSE GOTO270
 
@@ -325,7 +325,7 @@ REM 51 PRINT ST$;
 274 IFO=37 THENGOTO48 ELSEPRINT"I can't connect that.":GOTO48
 
 275 *|*** PUT ***
-276 IF F<>2THENPRINT"I don't have it.":GOTO48:ELSEINPUT" Where? "I$:GOSUB382:IF X>0THEN276
+276 IF F<>2THENPRINT"I don't have it.":GOTO48:ELSEINPUT" Where? "I$:PROCi:GOSUB382:IF X>0THEN276
 277 IF O=43 AND I$="CAGE" THEN EX$(36)="I see a dove.":OB%(O)=0:F%(5)=0:F%(7)=0:GOTO280
 278 IF O=20 AND I$="HOLE"THEN PRINT"OK, the hole is now plugged up and the  mouse can't get out.":F%(17)=1:OB%(39)=-2:OB%(20)=-2:GOTO48
 279 PRINT"I can't.":GOTO48
@@ -369,4 +369,9 @@ REM 51 PRINT ST$;
 398 IF OB%(54)<>0 OR OB%(43)<>0 THEN PRINT"The dove flew away through the broken"'"window.":OB%(54)=0:OB%(43)=0:F%(13)=1:RETURN
 399 RETURN
 400 GOTO 48
+
+500 DEFPROCi:IFLEFT$(I$,1)=" "REPEATI$=RIGHT$(I$,LENI$-1):UNTILLEFT$(I$,1)<>" "
+510 IFRIGHT$(I$,1)=" "REPEATI$=LEFT$(I$,LENI$-1):UNTILRIGHT$(I$,1)<>" "
+520 END.
+
 
