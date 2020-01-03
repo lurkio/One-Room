@@ -266,7 +266,7 @@ REM 51 PRINT ST$;
 
 231 IF O=48 THEN PRINT"Some seeds fell to the floor.":ELSE 233
 
-232 IF F%(17)=0 THEN PRINT"A mouse ate the seeds and took off"'"before i could catch it!":GOTO48:ELSE OB%(49)=7:GOTO48
+232 IF F%(17)=0 THEN PRINT"A mouse ate the seeds and took off"'"before I could catch it!":GOTO48:ELSE OB%(49)=7:GOTO48
 
 233 REM
 234 PRINT"NOTHING HAPPENED.":GOTO48
@@ -333,8 +333,8 @@ REM 51 PRINT ST$;
 281 PRINT"I can't do that.":GOTO48
 
 350 *|***** SAVE/LOAD ********
-351 ONERROR CLOSE#0:ONERROROFF:V.7:P.'"ERROR. Couldn't save!":TIME=0:REP.U.TIME>300:GOTO37
-352 DV%=OPENOUT("DATA"):PRINT#DV%,YOU,OB$(35),OB$(36),EX$(6),EX$(8),EX$(20),EX$(23),EX$(26),EX$(27),EX$(31),EX$(34),EX$(36),EX$(37),EX$(49)
+351 ONERROR C%=C%+1:IFC%<5 CLOSE#0:ONERROROFF:V.7:P.'"ERROR. Couldn't save!":TIME=0:REP.U.TIME>300:GOTO37 EL.ONERROROFF:V.7:P.'"ERROR. Couldn't save!"CHR$131"Recommend reboot.":TIME=0:REP.U.TIME>300:GOTO37
+352 C%=0:DV%=OPENOUT("DATA"):PRINT#DV%,YOU,OB$(35),OB$(36),EX$(6),EX$(8),EX$(20),EX$(23),EX$(26),EX$(27),EX$(31),EX$(34),EX$(36),EX$(37),EX$(49)
 353 FOR X%=1 TO NO
 354 PRINT#DV%,OB%(X%)
 355 NEXT:F.X%=1TO18:PRINT#DV%,F%(X%):N.
