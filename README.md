@@ -8,4 +8,4 @@ Play the game in-browser (or download it): http://bbcmicro.co.uk/game.php?id=288
 
 **data out.bas** — A program in BBC BASIC that writes the game's init data to a file that will be read in by *oneroom.bas* every time the game (re)starts.
 
-**data out.bas** — A program in BBC BASIC to help you check that the datafile written by *data out.bas* is correct.
+**data in.bas** — A program in BBC BASIC to help you check that the datafile written by *data out.bas* is correct.
