@@ -1,5 +1,5 @@
 # One-Room
-BBC BASIC port of the TRS-80/CoCo text adventure game One Room by Jorge Mir
+A port to BBC BASIC of the TRS-80/CoCo text adventure game One Room by Jorge Mir
 
 Play the game in-browser (or download it): http://bbcmicro.co.uk/game.php?id=2881
 
